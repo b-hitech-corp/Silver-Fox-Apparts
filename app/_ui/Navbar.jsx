@@ -2,14 +2,16 @@
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import fa_styles from "@fortawesome/fontawesome-svg-core/styles.css";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { useAuth } from "../_context/AuthContext";
 import GuestDropdown from "./GuestDropdown/GuestDropdown";
 
-function Navbar({ user, signOutAction }) {
+function Navbar({ signOutAction }) {
   const [hideMenu, setHideMenu] = useState(true);
   const pathname = usePathname();
+  const { user } = useAuth();
+
   return (
     <header>
       <div className="container header-items">
@@ -17,7 +19,11 @@ function Navbar({ user, signOutAction }) {
         <nav className={`navbar ${hideMenu ? "hide-menu" : "show-menu"}`}>
           <ul>
             <li>
-              <Link className={pathname === "/" ? "active" : ""} href="/" onClick={() => setHideMenu(true)}>
+              <Link
+                className={pathname === "/" ? "active" : ""}
+                href="/"
+                onClick={() => setHideMenu(true)}
+              >
                 Home
               </Link>
             </li>
@@ -45,7 +51,11 @@ function Navbar({ user, signOutAction }) {
                 <GuestDropdown user={user} signOutAction={signOutAction} />
               ) : (
                 <Link
-                  className={pathname.includes("account") || pathname === "/signin" ? "active" : ""}
+                  className={
+                    pathname.includes("account") || pathname === "/signin"
+                      ? "active"
+                      : ""
+                  }
                   href="/signin"
                   onClick={() => setHideMenu(true)}
                 >
@@ -55,7 +65,10 @@ function Navbar({ user, signOutAction }) {
             </li>
           </ul>
         </nav>
-        <button onClick={() => setHideMenu(!hideMenu)} className="toggle-menu-button">
+        <button
+          onClick={() => setHideMenu(!hideMenu)}
+          className="toggle-menu-button"
+        >
           <FontAwesomeIcon icon={hideMenu ? faBars : faClose} />
         </button>
       </div>

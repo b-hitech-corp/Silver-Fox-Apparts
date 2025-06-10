@@ -1,9 +1,11 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import RoomContainer from "./_components/RoomContainer";
 import LoadingSpinner from "@/app/_ui/LoadingSpinner";
 import { useParams } from "next/navigation";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/app/_lib/firebase/firebase";
 
 // export const metadata = {
 //   title: "Room Details",
@@ -20,7 +22,9 @@ function RoomDetails({ params }) {
       try {
         const roomRef = doc(db, "room_details", room_slug);
         const roomSnap = await getDoc(roomRef);
-        
+
+        console.log("roomSnap :::", roomSnap);
+
         if (roomSnap.exists()) {
           setRoomDetails({ id: roomSnap.id, ...roomSnap.data() });
         } else {
@@ -33,7 +37,7 @@ function RoomDetails({ params }) {
       }
     };
 
-    fetchRoomDetails();
+    room_slug && fetchRoomDetails();
   }, [room_slug]);
 
   return (
@@ -45,7 +49,7 @@ function RoomDetails({ params }) {
           </div>
         }
       >
-        <RoomContainer params={params} />
+        <RoomContainer params={params} roomDetails={roomDetails} />
       </Suspense>
     </section>
   );

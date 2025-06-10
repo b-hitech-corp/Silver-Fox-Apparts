@@ -26,11 +26,14 @@ const GuestDropdown = ({ user, signOutAction }) => {
     <div className={styles.avatarContainer} onClick={toggleDropdown}>
       <img
         src={
-          user.image
-            ? user.image
-            : `https://ui-avatars.com/api/?name=${user.name.replace(" ", "+")}&background=161616&color=F1F1F1`
+          user.photoURL
+            ? user.photoURL
+            : `https://ui-avatars.com/api/?name=${user?.photoURL?.replace(
+                " ",
+                "+"
+              )}&background=161616&color=F1F1F1`
         }
-        alt={`${user.name} avatar`}
+        alt={`${user.email} avatar`}
         className={styles.avatar}
       />
       <span className={styles.name}>

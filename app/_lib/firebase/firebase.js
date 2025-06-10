@@ -1,12 +1,8 @@
 // lib/firebase.js
 
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported as analyticsSupported } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-// import { getFunctions } from "firebase/functions"; // Optional
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,7 +12,7 @@ const firebaseConfig = {
   storageBucket: "spider-space-3cf1b.appspot.com",
   messagingSenderId: "480458246603",
   appId: "1:480458246603:web:6c76588594df51f124ce4e",
-  measurementId: "G-MWC6X56ZXW"
+  measurementId: "G-MWC6X56ZXW",
 };
 
 // Initialize Firebase

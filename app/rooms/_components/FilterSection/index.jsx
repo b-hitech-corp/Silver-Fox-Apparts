@@ -14,57 +14,57 @@ import toast, { Toaster } from "react-hot-toast";
 
 const options = [
   { value: "default", label: "Default Sorting" },
-  { value: "high-price", label: "From High to Low price" },
-  { value: "low-price", label: "From Low to High price" },
-  { value: "max-guests", label: "From Max to Min guests" },
-  { value: "min-guests", label: "From Min to Max guests" },
+  { value: "desc", label: "From High to Low price" },
+  { value: "asc", label: "From Low to High price" },
+  // { value: "max-guests", label: "From Max to Min guests" },
+  // { value: "min-guests", label: "From Min to Max guests" },
 ];
 
-function FilterSection({ filters }) {
-  const range = { from: filters?.range.split("_")?.at(0), to: filters?.range.split("_")?.at(1) };
-  const [startDate, setStartDate] = useState(
-    filters?.range && isValid(new Date(range.from)) ? formatRFC7231(new Date(range.from)) : ""
-  );
-  const [endDate, setEndDate] = useState(
-    filters?.range && isValid(new Date(range.to)) ? formatRFC7231(new Date(range.to)) : ""
-  );
+function FilterSection({ setSortRooms }) {
+  // const range = { from: filters?.range.split("_")?.at(0), to: filters?.range.split("_")?.at(1) };
+  // const [startDate, setStartDate] = useState(
+  //   filters?.range && isValid(new Date(range.from)) ? formatRFC7231(new Date(range.from)) : ""
+  // );
+  // const [endDate, setEndDate] = useState(
+  //   filters?.range && isValid(new Date(range.to)) ? formatRFC7231(new Date(range.to)) : ""
+  // );
 
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  // const searchParams = useSearchParams();
+  // const pathname = usePathname();
+  // const { replace } = useRouter();
 
   function handleSort(e) {
-    console.log(e);
-    const params = new URLSearchParams(searchParams);
-    params.set("sort", e.value);
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    setSortRooms(e.value);
+    // const params = new URLSearchParams(searchParams);
+    // params.set("sort", e.value);
+    // replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
-  function handleStartSelection(date) {
-    setStartDate(date);
-    console.log(date);
-  }
+  // function handleStartSelection(date) {
+  //   setStartDate(date);
+  //   console.log(date);
+  // }
 
-  function handleEndSelection(date) {
-    setEndDate(date);
-    console.log(date);
-  }
+  // function handleEndSelection(date) {
+  //   setEndDate(date);
+  //   console.log(date);
+  // }
 
-  function handleSearch() {
-    if (!startDate || !endDate) return;
-    const arrival = formatISO(new Date(startDate), { representation: "date" });
-    const departure = formatISO(new Date(endDate), { representation: "date" });
+  // function handleSearch() {
+  //   if (!startDate || !endDate) return;
+  //   const arrival = formatISO(new Date(startDate), { representation: "date" });
+  //   const departure = formatISO(new Date(endDate), { representation: "date" });
 
-    if (!isBefore(arrival, departure)) {
-      toast.error("Invalid date range!");
-      return;
-    }
+  //   if (!isBefore(arrival, departure)) {
+  //     toast.error("Invalid date range!");
+  //     return;
+  //   }
 
-    const params = new URLSearchParams(searchParams);
-    const formatedRange = `${arrival}_${departure}`;
-    params.set("range", formatedRange);
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }
+  //   const params = new URLSearchParams(searchParams);
+  //   const formatedRange = `${arrival}_${departure}`;
+  //   params.set("range", formatedRange);
+  //   replace(`${pathname}?${params.toString()}`, { scroll: false });
+  // }
 
   return (
     <form className={`${styles.filterSection} roomsForm`}>
@@ -77,11 +77,11 @@ function FilterSection({ filters }) {
           options={options}
           isSearchable={false}
           className={styles.select}
-          defaultValue={options.find((item) => item.value === filters?.filter) ?? options.at(0)}
+          // defaultValue={options.find((item) => item.value === filters?.filter) ?? options.at(0)}
         />
       </div>
 
-      <div className={styles.formControl}>
+      {/* <div className={styles.formControl}>
         <label>Filter By Date</label>
         <div className={styles.datesContainer}>
           <DatePicker
@@ -117,7 +117,7 @@ function FilterSection({ filters }) {
             <span>Search</span>
           </button>
         </div>
-      </div>
+      </div> */}
       <Toaster position="top-center" reverseOrder={false} />
     </form>
   );

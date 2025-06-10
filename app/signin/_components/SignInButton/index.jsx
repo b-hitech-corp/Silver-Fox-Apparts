@@ -1,11 +1,15 @@
 import styles from "./styles.module.css";
 import { useFormStatus } from "react-dom";
 
-function SignInButton() {
+function SignInButton({ isLoading }) {
   const { pending } = useFormStatus();
   return (
-    <button className={styles.formButton} disabled={pending} type="submit">
-      {pending ? "Checking..." : "Sign In"}
+    <button
+      className={styles.formButton}
+      disabled={pending || isLoading}
+      type="submit"
+    >
+      {isLoading ? "Loading..." : "Sign In"}
     </button>
   );
 }

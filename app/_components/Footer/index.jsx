@@ -8,9 +8,9 @@ function Footer() {
         <div>
           <h3>Contact Us</h3>
           <ul>
-            <li>email@gmail.com</li>
-            <li>+212 6 77 88 99 00</li>
-            <li>XYZ Street Agadir</li>
+            <li>SilverFoxApparts@gmail.com</li>
+            <li>(+1)-510-847-1485</li>
+            <li>Novissi -Rue 42 HDN, Lomé- Togo.</li>
             <li className={styles.icons}></li>
           </ul>
         </div>

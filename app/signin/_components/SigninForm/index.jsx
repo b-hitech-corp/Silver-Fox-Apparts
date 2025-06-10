@@ -13,6 +13,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 
 function SigninForm() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -70,6 +71,7 @@ function SigninForm() {
     e.preventDefault();
 
     if (validateForm()) {
+      setIsLoading(true);
       try {
         console.log("Form submitted:", formData);
         // await authAction(formData);
@@ -78,13 +80,14 @@ function SigninForm() {
           formData.email,
           formData.password
         );
-        
+
         router.push("/");
       } catch (error) {
         console.log("error====>", error);
         alert(error.message);
         // <Alert>{error.message}</Alert>;
       }
+      setIsLoading(false);
     }
   };
 
@@ -134,10 +137,9 @@ function SigninForm() {
           )}
         </div>
 
-        <SignInButton />
+        <SignInButton isLoading={isLoading} />
 
         <br />
-        <Link href="#">Forget Password?</Link>
         <p className={styles.signupLink}>
           Don't have an account? <Link href="/signup">Sign Up</Link>
           {/* <Link href="/signup">Sign Up</Link> */}

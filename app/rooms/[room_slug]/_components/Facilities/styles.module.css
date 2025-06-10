@@ -1,10 +1,12 @@
-
+.BookingPolicySection {
+  margin-bottom: 5rem;
+}
 .facilitiesTable {
   margin: auto;
   color: #181b20;
   border-collapse: collapse;
   width: 100%;
-  max-width: 800px;;
+  max-width: 800px;
 }
 
 .facilitiesTable tr:nth-child(2n) {

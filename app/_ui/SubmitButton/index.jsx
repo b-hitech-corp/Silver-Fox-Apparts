@@ -7,16 +7,17 @@ function SubmitButton({
   type = "button",
   className = "",
   content = { pending: "Loading...", base: "Submit" },
+  isLoading = false,
 }) {
   const { pending } = useFormStatus();
   return (
     <button
       type={type}
       onClick={onClick ? () => onClick() : null}
-      disabled={pending}
+      disabled={pending || isLoading}
       className={`${styles.sendBtn} ${className}`}
     >
-      {pending ? content.pending : content.base}
+      {pending || isLoading ? content.pending : content.base}
     </button>
   );
 }

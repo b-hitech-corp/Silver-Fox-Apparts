@@ -1,80 +1,105 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 
+import { reservationUpdateAction } from "@/app/_lib/actions";
+import { db } from "@/app/_lib/firebase/firebase";
 import Badge from "@/app/_ui/Badge";
-import { auth } from "@/auth";
-import { deleteReservation, getReservationByID } from "@/app/_lib/supabase/reservations";
-import { revalidatePath } from "next/cache";
-import ControlButtons from "../ControlButtons";
-import { reservationCancelAction, reservationUpdateAction } from "@/app/_lib/actions";
 import { formatToAbrFormat } from "@/app/utils/datetime";
-import { differenceInDays, isFuture, isPast } from "date-fns";
-
-const SUPABASE_ROOMS_URL = process.env.NEXT_PUBLIC_SUPABASE_IMGS_URL;
+import { isFuture, isPast } from "date-fns";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import toast from "react-hot-toast";
+import ControlButtons from "../ControlButtons";
 
 function ReservationCard({ reservation }) {
-  async function deleteReservationAction(prevState, formData) {
-    "use server";
+  const arrivalDate = formatToAbrFormat(reservation.check_in);
+  const departureDate = formatToAbrFormat(reservation.check_out);
 
-    prevState = {};
+  const handleDelete = async () => {
+    try {
+      const bookingRef = doc(db, "room_bookings", reservation.id);
+      const bookingSnap = await getDoc(bookingRef);
 
-    const session = await auth();
-    const active_user = session?.user;
+      if (!bookingSnap.exists()) {
+        toast.error("Reservation not found.");
+        return;
+      }
 
-    if (!active_user) return { ...prevState, error: "unauthorized action, please authenticate and try again" };
+      const bookingData = bookingSnap.data();
 
-    const targeted_reservation = await getReservationByID(reservation.id);
+      // Condition: Cannot delete if already confirmed
+      if (bookingData.status === "confirmed") {
+        toast.error(
+          "Cannot delete confirmed reservations. Please cancel it instead."
+        );
+        return;
+      }
 
-    if (targeted_reservation.status === "confirmed")
-      return { ...prevState, error: "Cannot delete active reservations! You may want to cancel it instead" };
+      // Additional condition: already canceled or finished
+      if (
+        bookingData.status === "canceled" ||
+        bookingData.status === "finished"
+      ) {
+        toast.error("This reservation is already canceled or finished.");
+        return;
+      }
 
-    if (targeted_reservation.guest_id !== active_user.id) return { ...prevState, error: "unauthorized action!" };
-
-    await deleteReservation(session.supabaseAccessToken, reservation.id);
-    revalidatePath("/account/history");
-
-    return { ...prevState, status: "success" };
-  }
-
-  const arrivalDate = formatToAbrFormat(reservation.start_date);
-  const departureDate = formatToAbrFormat(reservation.end_date);
+      await updateDoc(bookingRef, { status: "canceled" });
+      toast.success("Reservation canceled successfully.");
+    } catch (error) {
+      console.error("Error canceling reservation:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <article className={styles.reservationItem}>
       <div className={styles.reservationThumbnail}>
-        <Image fill src={`${SUPABASE_ROOMS_URL}/${reservation.rooms.thumbnail}`} />
+        <Image fill src={reservation?.room?.room_img} />
       </div>
 
       <div className={styles.reservationInfos}>
         <div className={styles.reservationOverview}>
           <h2 className={styles.reservationTitle}>
-            <span>{reservation.rooms.name}</span>
+            <span>{reservation.room_type}</span>
 
-            {isPast(reservation.start_date) && isFuture(reservation.end_date) ? (
-              <span className={`${styles.onGoing} ${styles.reservationEstimation}`}>ON GOING</span>
-            ) : isFuture(reservation.start_date) ? (
-              <span className={`${styles.future} ${styles.reservationEstimation}`}>FUTURE</span>
-            ) : isPast(reservation.end_date) ? (
-              <span className={`${styles.past} ${styles.reservationEstimation}`}>PAST</span>
+            {isPast(reservation.check_in) && isFuture(reservation.check_out) ? (
+              <span
+                className={`${styles.onGoing} ${styles.reservationEstimation}`}
+              >
+                ON GOING
+              </span>
+            ) : isFuture(reservation.check_in) ? (
+              <span
+                className={`${styles.future} ${styles.reservationEstimation}`}
+              >
+                FUTURE
+              </span>
+            ) : isPast(reservation.check_out) ? (
+              <span
+                className={`${styles.past} ${styles.reservationEstimation}`}
+              >
+                PAST
+              </span>
             ) : (
               ""
             )}
           </h2>
           <p>
-            {formatToAbrFormat(arrivalDate)} - {formatToAbrFormat(departureDate)}
+            {formatToAbrFormat(arrivalDate)} -{" "}
+            {formatToAbrFormat(departureDate)}
           </p>
 
           <p>
-            <span className={styles.price}>${reservation.reserved_price.toFixed(2)}</span> - {reservation.guests_count}{" "}
-            Guest(s)
+            <span className={styles.price}>${reservation.room_price}</span> -{" "}
+            {reservation.guests_count} Guest(s)
           </p>
 
-          {/* CREATE A SEPARATED COMPONENT FOR THE STATUS AS BADGE */}
           <Badge
             type={
               reservation.status == "unconfirmed"
                 ? "warning"
-                : reservation.status == "canceled" || reservation.status == "finished"
+                : reservation.status == "canceled" ||
+                  reservation.status == "finished"
                 ? "danger"
                 : "success"
             }
@@ -83,16 +108,12 @@ function ReservationCard({ reservation }) {
           </Badge>
         </div>
         <div className={styles.reservationPriceContainer}>
-          {/* USE 3rd PARTY API FOR CURRENCY CONVERSION */}
-
           <ControlButtons
             reservationUpdateAction={reservationUpdateAction}
-            deleteAction={deleteReservationAction}
+            deleteAction={handleDelete}
             reservation={reservation}
-            reservationCancelAction={reservationCancelAction}
+            reservationCancelAction={handleDelete}
           />
-
-          {/* <DeleteForm deleteAction={deleteReservationAction} /> */}
         </div>
       </div>
     </article>

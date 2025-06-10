@@ -24,8 +24,7 @@ function SignUpForm() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const [critical, setCritical] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -64,6 +63,7 @@ function SignUpForm() {
       return;
     }
     console.log("formData", formData);
+    setIsLoading(true);
     try {
       const res = await createUserWithEmailAndPassword(
         auth,
@@ -74,7 +74,7 @@ function SignUpForm() {
       const user = res.user;
 
       // Reference to Firestore document
-      const userRef = doc(db, "users", user.uid);
+      const userRef = doc(db, "hotel_users", user.uid);
       const userSnap = await getDoc(userRef);
 
       if (!userSnap.exists()) {
@@ -93,6 +93,8 @@ function SignUpForm() {
       router.push("/signin");
     } catch (error) {
       <Alert>{error.message}</Alert>;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -181,7 +183,7 @@ function SignUpForm() {
           )}
         </div>
 
-        <SignUpButton />
+        <SignUpButton isLoading={isLoading} />
 
         <br />
         <p className={styles.signinLink}>

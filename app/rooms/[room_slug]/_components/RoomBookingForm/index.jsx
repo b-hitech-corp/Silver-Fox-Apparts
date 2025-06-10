@@ -7,7 +7,7 @@ import FormDayPicker from "../FormDayPicker";
 
 import { useFormState } from "react-dom";
 import ReservationButton from "../ReservationButton";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const initialState = {
@@ -15,12 +15,14 @@ const initialState = {
   guestsError: "",
   criticalError: "",
   isBooking: false,
+  success: false,
 };
 
 function RoomBookingForm({ bookingAction, room }) {
   const [state, formAction] = useFormState(bookingAction, initialState);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [pickerResetKey, setPickerResetKey] = useState(0);
 
   const [guests, setGuests] = useState("");
 
@@ -41,7 +43,11 @@ function RoomBookingForm({ bookingAction, room }) {
       return;
     }
 
-    if (!guests || parseInt(guests) < 1 || parseInt(guests) > room.capacity) {
+    if (
+      !guests ||
+      parseInt(guests) < 1 ||
+      parseInt(guests) > room?.room_capacity
+    ) {
       toast.error("Please provide guests number");
       return;
     }
@@ -54,9 +60,23 @@ function RoomBookingForm({ bookingAction, room }) {
     formAction(newForm);
   }
 
+  useEffect(() => {
+    console.log("stated:::62", state);
+    if (state.success) {
+      setStartDate("");
+      setEndDate("");
+      setGuests("");
+      setPickerResetKey((prev) => prev + 1); // trigger FormDayPicker re-render
+    }
+  }, [state.success]);
+
   return (
     <form action={handleSubmit} className={styles.roomBookingForm}>
-      <FormDayPicker endDate={endDate} handleDateSelection={handleDateSelection} />
+      <FormDayPicker
+        key={pickerResetKey} // force re-render
+        endDate={endDate}
+        handleDateSelection={handleDateSelection}
+      />
 
       <div className={styles.formItem}>
         <div className={styles.formInput}>
@@ -65,7 +85,7 @@ function RoomBookingForm({ bookingAction, room }) {
           </div>
           <div className={styles.formControl}>
             <label>Room Type</label>
-            <input type="text" value={room.name} readOnly disabled />
+            <input type="text" value={room?.room_type} readOnly disabled />
           </div>
         </div>
         <div className={styles.formInput}>
@@ -94,18 +114,17 @@ function RoomBookingForm({ bookingAction, room }) {
             <label>Guests</label>
             <select name="" id="" onChange={(e) => setGuests(e.target.value)}>
               <option value="">Select guests number</option>
-              {Array.from(Array(room?.capacity ?? 0)).map((item, index) => (
-                <option key={index} value={index + 1}>
-                  {index + 1}
-                </option>
-              ))}
+              {Array.from(Array(room?.room_capacity ?? 0)).map(
+                (item, index) => (
+                  <option key={index} value={index + 1}>
+                    {index + 1}
+                  </option>
+                )
+              )}
             </select>
           </div>
         </div>
 
-        {/* <button type="submit" className={styles.formButton} disabled={state.isBooking}>
-          {state.isBooking ? "Booking..." : "Book Now"}
-        </button> */}
         <ReservationButton />
       </div>
       <Toaster position="top-center" reverseOrder={false} />

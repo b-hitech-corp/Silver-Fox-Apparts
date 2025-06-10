@@ -5,8 +5,20 @@ import ReservationOverview from "../ReservationOverview";
 import DeleteForm from "../DeleteFrom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faEye } from "@fortawesome/free-solid-svg-icons";
+import { useRef } from "react";
 
-function ControlButtons({ deleteAction, reservation, reservationCancelAction }) {
+function ControlButtons({
+  deleteAction,
+  reservation,
+  reservationCancelAction,
+}) {
+  const closeBtnRef = useRef();
+
+  const handleDelete = async () => {
+    const result = await deleteAction();
+    closeBtnRef.current?.click();
+  };
+
   return (
     <div className={styles.buttonsContainer}>
       <Modal>
@@ -24,14 +36,21 @@ function ControlButtons({ deleteAction, reservation, reservationCancelAction }) 
               deleteAction={deleteAction}
             >
               <Modal.ToggleClose>
-                <button type="button" className={styles.closeButton}>
+                <button
+                  ref={closeBtnRef}
+                  type="button"
+                  className={styles.closeButton}
+                >
                   <FontAwesomeIcon icon={faCircleXmark} />
                 </button>
               </Modal.ToggleClose>
             </ReservationOverview>
           </Modal.Wrapper>
         </Modal.Overlay>
-        {reservation.status !== "confirmed" && <DeleteForm deleteAction={deleteAction} />}
+        {reservation.status !== "confirmed" &&
+          reservation.status !== "canceled" && (
+            <DeleteForm deleteAction={handleDelete} />
+          )}
       </Modal>
     </div>
   );

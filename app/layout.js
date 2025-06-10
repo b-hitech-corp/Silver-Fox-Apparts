@@ -1,9 +1,9 @@
-import { auth } from "@/auth";
 import Footer from "./_components/Footer";
 import Navbar from "./_ui/Navbar";
-import styles from "./styles.css";
+import "./styles.css";
 
 import { Roboto } from "next/font/google";
+import { AuthProvider } from "./_context/AuthContext";
 import { signOutAction } from "./_lib/actions";
 
 const roboto_font = Roboto({
@@ -13,13 +13,14 @@ const roboto_font = Roboto({
 });
 
 export default async function RootLayout({ children }) {
-  // const session = await auth();
   return (
     <html lang="en">
       <body className={roboto_font.className}>
-        <Navbar user={""} signOutAction={signOutAction} />
-        <main>{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Navbar signOutAction={signOutAction} />
+          <main>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
