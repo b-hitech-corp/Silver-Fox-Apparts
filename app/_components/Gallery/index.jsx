@@ -1,12 +1,21 @@
-import { getRoomImages } from "@/app/_lib/firebase/roomImages";
+"use client";
+import { useEffect, useState } from "react";
+import { listenToRoomImages } from "@/app/_lib/firebase/roomImages";
 import Heading from "@/app/_ui/Heading";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-async function Gallery() {
-  const images = await getRoomImages();
+function Gallery() {
+  const [galleryImages, setGalleryImages] = useState([]);
 
-  const galleryImages = images?.[0]?.images?.slice(0, 8) ?? [];
+  useEffect(() => {
+    const unsubscribe = listenToRoomImages((images) => {
+      const latestImages = images?.[0]?.images?.slice(0, 8) ?? [];
+      setGalleryImages(latestImages);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <section className={styles.gallerySection}>
@@ -15,7 +24,12 @@ async function Gallery() {
         <div className={styles.galleryGrid}>
           {galleryImages.map((item, index) => (
             <div key={index} className={styles.thumbnail}>
-              <Image fill src={item} alt={`room-iamges-${index}`} />
+              <Image
+                fill
+                src={item}
+                alt={`room-image-${index}`}
+                style={{ objectFit: "cover" }}
+              />
             </div>
           ))}
         </div>

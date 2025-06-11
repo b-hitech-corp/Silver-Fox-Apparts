@@ -1,6 +1,13 @@
 "use client";
 import { Icon } from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvent } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMap,
+  useMapEvent,
+} from "react-leaflet";
 
 function SetViewOnClick() {
   const map = useMapEvent("click", (e) => {
@@ -21,14 +28,26 @@ function ChangeView({ position }) {
 
 function Map({ initialCenter, center }) {
   return (
-    <MapContainer style={{ height: "100%" }} center={center} zoom={13} scrollWheelZoom={true}>
+    <MapContainer
+      style={{ height: "100%" }}
+      center={center}
+      zoom={13}
+      scrollWheelZoom={true}
+    >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker
-        icon={new Icon({ iconUrl: "/marker-icon.png", iconSize: [25, 41], iconAnchor: [12, 41] })}
-        position={[30.390245794565757, -9.556749533359007]}
+        icon={
+          new Icon({
+            iconUrl: "/marker-icon.png",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+          })
+        }
+        // position={[30.390245794565757, -9.556749533359007]}
+        position={[6.17748, 1.25358]}
       >
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
