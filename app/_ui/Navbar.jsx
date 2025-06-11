@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "../_context/AuthContext";
 import GuestDropdown from "./GuestDropdown/GuestDropdown";
+import Image from "next/image";
 
 function Navbar({ signOutAction }) {
   const [hideMenu, setHideMenu] = useState(true);
@@ -15,7 +16,14 @@ function Navbar({ signOutAction }) {
   return (
     <header>
       <div className="container header-items">
-        <h2>LOGO</h2>
+        {/* <h2> */}
+        <Image
+          width={85}
+          height={75}
+          src={"/logo-hotal.jpg"}
+          alt="slider image"
+        />
+        {/* </h2> */}
         <nav className={`navbar ${hideMenu ? "hide-menu" : "show-menu"}`}>
           <ul>
             <li>
