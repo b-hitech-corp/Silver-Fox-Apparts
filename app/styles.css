@@ -11,7 +11,8 @@
   margin: 0;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
   display: inline-block;
 }
@@ -19,7 +20,6 @@ ul, li {
 a {
   text-decoration: none;
 }
-
 
 /* END RESETING STYLES */
 
@@ -40,7 +40,7 @@ main {
 }
 
 .bg-subtle {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 
 /* END GLOBAL STYLES */
@@ -53,12 +53,10 @@ header {
 
 header .header-items {
   display: flex;
-  height: 64px;
+  height: 84px;
   justify-content: space-between;
   align-items: center;
 }
-
-
 
 header nav ul {
   /* display: flex; */
@@ -81,7 +79,7 @@ header nav ul {
   width: 100dvw;
   flex-direction: column;
   align-items: center;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   padding: 40px 20px;
   z-index: 9999;
 }
@@ -101,7 +99,8 @@ header nav ul {
   transition: all 150ms linear;
 }
 
-.navbar ul a:hover, .navbar ul a.active {
+.navbar ul a:hover,
+.navbar ul a.active {
   color: #dc143c;
 }
 
@@ -152,7 +151,7 @@ div.slider {
   position: relative;
 }
 
-@media(min-width: 820px) {
+@media (min-width: 820px) {
   div.slider {
     overflow: hidden;
   }
@@ -260,20 +259,17 @@ div.slider nav.slider-menu button.active {
 
 /* DATE PICKER */
 @media (max-width: 590px) {
-  
-  .roomsForm .react-datepicker-wrapper, 
-  .roomsForm .styles_input__lVi_H .react-datepicker-ignore-onclickoutside, 
+  .roomsForm .react-datepicker-wrapper,
+  .roomsForm .styles_input__lVi_H .react-datepicker-ignore-onclickoutside,
   .roomsForm .styles_input__lVi_H {
     width: 100%;
   }
-
 }
 
-.modal-update-form .react-datepicker-wrapper, 
-.modal-update-form .styles_input__lVi_H .react-datepicker-ignore-onclickoutside, 
+.modal-update-form .react-datepicker-wrapper,
+.modal-update-form .styles_input__lVi_H .react-datepicker-ignore-onclickoutside,
 .modal-update-form .styles_input__lVi_H,
-.modal-update-form .react-datepicker__input-container input
-{
+.modal-update-form .react-datepicker__input-container input {
   width: 100%;
 }
 

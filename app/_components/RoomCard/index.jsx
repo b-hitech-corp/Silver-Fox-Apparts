@@ -1,20 +1,18 @@
 import Image from "next/image";
-import styles from "./styles.module.css";
 import Card from "../Card/Card";
-
-const SUPABASE_ROOMS_URL = process.env.NEXT_PUBLIC_SUPABASE_IMGS_URL;
+import styles from "./styles.module.css";
 
 function RoomCard({ room }) {
   return (
     <Card>
       <Card.Thumbnail>
-        <Image fill src={`${SUPABASE_ROOMS_URL}/${room.thumbnail}`} alt="" />
+        <Image fill src={room.room_img} alt="room-images" />
       </Card.Thumbnail>
 
       <Card.Description className={styles.roomDescription}>
-        <h2>{room.name}</h2>
+        <h2>{room.room_type}</h2>
 
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia voluptates amet atque.</p>
+        <p>{room.room_details}</p>
       </Card.Description>
     </Card>
   );

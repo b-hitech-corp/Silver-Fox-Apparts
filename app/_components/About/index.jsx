@@ -8,12 +8,19 @@ function About() {
       <div className={`container ${styles.aboutContainer}`}>
         <div className={styles.description}>
           <Heading>About Us</Heading>
+          <p>Welcome to Silver Fox Apartment, </p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis perferendis itaque iure consequatur iusto
-            omnis sapiente, doloribus animi velit vero impedit repellendus minus eaque quos voluptatum eum obcaecati
-            ducimus sequi! Blanditiis impedit praesentium labore amet. Numquam molestias, praesentium iste minus quis
-            cupiditate ea voluptatem natus, impedit perferendis distinctio ullam atque enim error, quasi sit? Iure
-            quibusdam aperiam nostrum enim. Sequi.
+            At Silver Fox Apartment, we blend hotel-style luxury with the
+            comfort of home. Perfectly located in the heart of the city, our
+            fully furnished apartments are ideal for short or long stays —
+            whether you're here for business or leisure.
+          </p>
+          <p>
+            Enjoy seamless online booking and a stress-free stay with modern
+            amenities like high-speed Wi-Fi, fully equipped kitchens, cozy
+            bedrooms, and professional housekeeping. Backed by exceptional
+            customer service and 24/7 support, we’re committed to making your
+            experience smooth, comfortable, and memorable.
           </p>
         </div>
         <div className={styles.gallery}>
