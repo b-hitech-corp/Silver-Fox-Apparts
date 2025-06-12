@@ -9,9 +9,36 @@ import LoadingSpinner from "./_ui/LoadingSpinner";
 import { redirect } from "next/navigation";
 import ContactSection from "./_components/ContactSection";
 
+// export const metadata = {
+//   title: "Hotel Booking App",
+//   description: "Hotel Booking App built with NextJS",
+//   image: "/img-9.jpg",
+// };
+
 export const metadata = {
   title: "Hotel Booking App",
   description: "Hotel Booking App built with NextJS",
+  openGraph: {
+    title: "Hotel Booking App",
+    description: "Hotel Booking App built with NextJS",
+    url: "https://www.silverfoxapparts.com", // Replace with your actual domain
+    // url: "https://0h6rjhpn-3000.inc1.devtunnels.ms", // Replace with your actual domain
+    type: "website",
+    images: [
+      {
+        url: "/img-9.jpg", // Ensure this path is correct and public
+        width: 1200,
+        height: 630,
+        alt: "Hotel Booking Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hotel Booking App",
+    description: "Hotel Booking App built with NextJS",
+    images: ["/img-9.jpg"],
+  },
 };
 
 export default async function Home() {
