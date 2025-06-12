@@ -12,7 +12,7 @@ function RoomCard({ room }) {
       <Card.Description className={styles.roomDescription}>
         <h2>{room.room_type}</h2>
 
-        <p>{room.room_details}</p>
+        {/* <p>{room.room_details}</p> */}
       </Card.Description>
     </Card>
   );

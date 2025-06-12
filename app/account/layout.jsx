@@ -1,10 +1,27 @@
+"use client";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHistory, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
-import { signOutAction } from "../_lib/actions";
+import {
+  faHistory,
+  faSignOut,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { getAuth, signOut } from "firebase/auth";
 
 function Layout({ children }) {
+  async function signOutAction() {
+    const auth = getAuth();
+
+    try {
+      await signOut(auth);
+      // Redirect to home page after sign out
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  }
+
   return (
     <section className={styles.accountLayout}>
       <aside className={styles.accountSidebar}>

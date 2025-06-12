@@ -3,8 +3,9 @@ import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { getAuth, signOut } from "firebase/auth";
 
-const GuestDropdown = ({ user, signOutAction }) => {
+const GuestDropdown = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -21,6 +22,18 @@ const GuestDropdown = ({ user, signOutAction }) => {
     window.addEventListener("click", closeDropdown);
     return () => window.removeEventListener("click", closeDropdown);
   }, []);
+
+  async function signOutAction() {
+    const auth = getAuth();
+
+    try {
+      await signOut(auth);
+      // Redirect to home page after sign out
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  }
 
   return (
     <div className={styles.avatarContainer} onClick={toggleDropdown}>

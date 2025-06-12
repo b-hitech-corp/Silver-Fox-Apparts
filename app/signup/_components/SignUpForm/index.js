@@ -90,7 +90,7 @@ function SignUpForm() {
       } else {
         console.log("User already exists in Firestore.");
       }
-      router.push("/signin");
+      router.push("/");
     } catch (error) {
       <Alert>{error.message}</Alert>;
     } finally {

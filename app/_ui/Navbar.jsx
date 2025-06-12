@@ -19,8 +19,8 @@ function Navbar({ signOutAction }) {
         {/* <h2> */}
         <Image
           width={85}
-          height={85}
-          src={"/logo-hotal.jpg"}
+          height={65}
+          src={"/logo-hotal-1.jpg"}
           alt="slider image"
         />
         {/* </h2> */}

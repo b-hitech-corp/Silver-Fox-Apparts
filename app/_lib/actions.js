@@ -16,6 +16,7 @@ import { revalidatePath } from "next/cache";
 import { createGuest, getGuestByEmail } from "./supabase/guests";
 import { hash, hashSync } from "bcryptjs";
 import { createMessage } from "./supabase/inbox";
+import { getAuth } from "firebase/auth";
 
 export async function authAction(prevState, formData) {
   // await new Promise((res) => setTimeout(res, 500));
@@ -63,8 +64,20 @@ export async function bookingCancelAction() {
   }
 }
 
+// export async function signOutAction() {
+//   await signOut({ redirectTo: "/signin" });
+// }
+
 export async function signOutAction() {
-  await signOut({ redirectTo: "/signin" });
+  const auth = getAuth();
+
+  try {
+    await signOut(auth);
+    // Redirect to home page after sign out
+    window.location.href = "/";
+  } catch (error) {
+    console.error("Error signing out:", error);
+  }
 }
 
 export async function reservationUpdateAction(prevState, formData) {

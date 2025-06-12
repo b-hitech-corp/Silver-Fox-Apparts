@@ -7,14 +7,14 @@ function Blog() {
     <section className={styles.blogSection}>
       <div className="container">
         <Heading className={styles.heading}>Blog</Heading>
-        <p className={styles.description}>
+        {/* <p className={styles.description}>
           Lorem Ipsum is available, but the majority have suffered
-        </p>
+        </p> */}
 
         <div className={styles.blogGrid}>
           <Card>
             <Card.Thumbnail>
-              <Image fill src="/bg.png" alt="" />
+              <Image fill src="/img-4.jpg" alt="" />
             </Card.Thumbnail>
             <Card.Description className={styles.blogDescriptionContainer}>
               <h2 className={styles.blogHeading}>
@@ -33,7 +33,7 @@ function Blog() {
           </Card>
           <Card>
             <Card.Thumbnail>
-              <Image fill src="/bg.png" alt="" />
+              <Image fill src="/img-5.jpg" alt="" />
             </Card.Thumbnail>
             <Card.Description className={styles.blogDescriptionContainer}>
               <h2 className={styles.blogHeading}>
@@ -52,7 +52,7 @@ function Blog() {
 
           <Card>
             <Card.Thumbnail>
-              <Image fill src="/bg.png" alt="" />
+              <Image fill src="/img-6.jpg" alt="" />
             </Card.Thumbnail>
             <Card.Description className={styles.blogDescriptionContainer}>
               <h2 className={styles.blogHeading}>

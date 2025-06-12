@@ -25,7 +25,7 @@ function About() {
         </div>
         <div className={styles.gallery}>
           <div>
-            <Image fill src="/bg.png" alt="" />
+            <Image fill src="/bg-1.jpg" alt="" />
           </div>
         </div>
       </div>

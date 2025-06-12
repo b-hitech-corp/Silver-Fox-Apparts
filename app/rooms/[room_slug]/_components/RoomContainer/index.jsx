@@ -35,6 +35,7 @@ async function RoomContainer({ params, roomDetails }) {
     const end_date = formData.get("end_date");
     const guests_count = parseInt(formData.get("guests_count"));
     const room_id = formData.get("room_id");
+    const payment_mode = formData.get("payment_mode");
 
     console.log("start_date :::", start_date);
     console.log("end_date :::", end_date);
@@ -56,6 +57,7 @@ async function RoomContainer({ params, roomDetails }) {
           user_id: user.uid, // <-- store user reference
           user_email: user.email, // optional
           status: "pending",
+          payment_mode,
           created_at: new Date().toISOString(),
         });
         toast.success("Room booked sucessfully");

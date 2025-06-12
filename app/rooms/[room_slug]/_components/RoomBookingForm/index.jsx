@@ -25,6 +25,7 @@ function RoomBookingForm({ bookingAction, room }) {
   const [pickerResetKey, setPickerResetKey] = useState(0);
 
   const [guests, setGuests] = useState("");
+  const [paymentMode, setPaymentMode] = useState("cod");
 
   const handleDateSelection = useCallback((range) => {
     if (!range) return;
@@ -57,6 +58,7 @@ function RoomBookingForm({ bookingAction, room }) {
     newForm.set("end_date", endDate);
     newForm.set("guests_count", guests);
     newForm.set("room_id", room.id);
+    newForm.set("payment_mode", paymentMode);
     formAction(newForm);
   }
 
@@ -67,6 +69,7 @@ function RoomBookingForm({ bookingAction, room }) {
       setEndDate("");
       setGuests("");
       setPickerResetKey((prev) => prev + 1); // trigger FormDayPicker re-render
+      setPaymentMode("cod");
     }
   }, [state.success]);
 
@@ -121,6 +124,26 @@ function RoomBookingForm({ bookingAction, room }) {
                   </option>
                 )
               )}
+            </select>
+          </div>
+        </div>
+        <div className={styles.formInput}>
+          <div className={styles.formIcon}>
+            <FontAwesomeIcon icon={faUsers} />
+          </div>
+          <div className={styles.formControl}>
+            <label>Payment Option</label>
+            <select
+              name=""
+              id=""
+              onChange={(e) => setPaymentMode(e.target.value)}
+              value={paymentMode}
+            >
+              <option value="">Select Payement Mode</option>
+              <option value={"cod"}>COD (Cash On Delivary)</option>
+              <option value={"online"} disabled>
+                Online
+              </option>
             </select>
           </div>
         </div>
