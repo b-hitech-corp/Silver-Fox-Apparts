@@ -53,7 +53,7 @@ header {
 
 header .header-items {
   display: flex;
-  height: 84px;
+  height: 180px;
   justify-content: space-between;
   align-items: center;
 }

@@ -16,14 +16,13 @@ function Navbar({ signOutAction }) {
   return (
     <header>
       <div className="container header-items">
-        {/* <h2> */}
         <Image
-          width={85}
-          height={65}
-          src={"/logo-hotal-1.jpg"}
+          width={180}
+          height={180}
+          src={"/logo-hotal.jpg"}
           alt="slider image"
+          style={{ height: "100%" }}
         />
-        {/* </h2> */}
         <nav className={`navbar ${hideMenu ? "hide-menu" : "show-menu"}`}>
           <ul>
             <li>
@@ -44,7 +43,15 @@ function Navbar({ signOutAction }) {
                 Rooms
               </Link>
             </li>
-            {/* <li>About</li> */}
+            <li>
+              <Link
+                href={"/about"}
+                className={pathname === "/about" ? "active" : ""}
+                onClick={() => setHideMenu(true)}
+              >
+                About
+              </Link>
+            </li>
             <li>
               <Link
                 href={"/contact"}

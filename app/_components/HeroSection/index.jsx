@@ -4,7 +4,7 @@ import BookingForm from "../BookingForm";
 import styles from "./index.module.css";
 import BookingButton from "../BookingButton";
 import Modal from "@/app/_components/Modal/Modal";
-const images = ["/bg.png", "/img-1.jpg", "/img-2.jpg", "/img-3.jpg"];
+const images = ["/bg.png", "/img-1.jpg", "/img-2.jpg", "/img-10.jpg"];
 
 function HeroSection({ bookingSearchAction }) {
   return (
@@ -14,7 +14,7 @@ function HeroSection({ bookingSearchAction }) {
           <BookingForm bookingSearchAction={bookingSearchAction} />
         </div>
         <div className={styles.heroTitle}>
-          <p>Find Comfort In a Foriegn Land With Us</p>
+          <p>Find Comfort In a Foreign Land With Us</p>
           <p>Book Now, Pay On Arrival</p>
           <div className={styles.heroCTA}>
             <Modal>

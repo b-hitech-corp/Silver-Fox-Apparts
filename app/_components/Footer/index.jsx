@@ -24,6 +24,9 @@ function Footer() {
             <li>
               <Link href="/rooms">Rooms</Link>
             </li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
 
             {/* <li>Blog</li> */}
             <li>
