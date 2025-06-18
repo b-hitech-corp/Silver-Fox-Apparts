@@ -48,7 +48,7 @@ function ControlButtons({
           </Modal.Wrapper>
         </Modal.Overlay>
         {reservation.status !== "confirmed" &&
-          reservation.status !== "canceled" && (
+          reservation.status !== "cancelled" && (
             <DeleteForm deleteAction={handleDelete} />
           )}
       </Modal>

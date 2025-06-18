@@ -24,7 +24,7 @@ function ReservationOverview({
   const handleDelete = async () => {
     await deleteAction();
     setShowCancel(false);
-    toast.success("Reservation canceled successfully.");
+    toast.success("Reservation cancelled successfully.");
   };
 
   if (showCancel)
@@ -107,7 +107,7 @@ function ReservationOverview({
             </Link> */}
 
             {reservation.status !== "confirmed" &&
-              reservation.status !== "canceled" && (
+              reservation.status !== "cancelled" && (
                 <>
                   {allowDelete ? (
                     <DeleteForm deleteAction={deleteAction} showLabel={true} />

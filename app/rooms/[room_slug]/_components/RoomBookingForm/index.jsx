@@ -141,9 +141,7 @@ function RoomBookingForm({ bookingAction, room }) {
             >
               <option value="">Select Payement Mode</option>
               <option value={"cod"}>COD (Cash On Delivary)</option>
-              <option value={"online"} disabled>
-                Online
-              </option>
+              <option value={"online"}>Online</option>
             </select>
           </div>
         </div>

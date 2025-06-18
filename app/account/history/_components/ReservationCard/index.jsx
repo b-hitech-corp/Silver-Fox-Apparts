@@ -34,17 +34,17 @@ function ReservationCard({ reservation }) {
         return;
       }
 
-      // Additional condition: already canceled or finished
+      // Additional condition: already cancelled or finished
       if (
-        bookingData.status === "canceled" ||
+        bookingData.status === "cancelled" ||
         bookingData.status === "finished"
       ) {
-        toast.error("This reservation is already canceled or finished.");
+        toast.error("This reservation is already cancelled or finished.");
         return;
       }
 
-      await updateDoc(bookingRef, { status: "canceled" });
-      toast.success("Reservation canceled successfully.");
+      await updateDoc(bookingRef, { status: "cancelled" });
+      toast.success("Reservation cancelled successfully.");
     } catch (error) {
       console.error("Error canceling reservation:", error);
       toast.error("Something went wrong. Please try again.");
@@ -98,7 +98,7 @@ function ReservationCard({ reservation }) {
             type={
               reservation.status == "unconfirmed"
                 ? "warning"
-                : reservation.status == "canceled" ||
+                : reservation.status == "cancelled" ||
                   reservation.status == "finished"
                 ? "danger"
                 : "success"

@@ -27,7 +27,7 @@ export const listenToUserReservationsWithRoomDetails = (
     const reservations = await Promise.all(
       snapshot.docs.map(async (docSnap) => {
         const reservationData = docSnap.data();
-        const roomId = reservationData.room_id;
+        const roomId = reservationData.roomId;
 
         let roomData = null;
         try {

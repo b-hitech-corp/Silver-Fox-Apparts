@@ -7,7 +7,13 @@ import RoomsSection from "./_components/RoomsSection";
 import { Suspense, useState, useEffect } from "react";
 import Loader from "../_ui/Loader";
 import { db } from "../_lib/firebase/firebase";
-import { collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
 function Rooms({ searchParams }) {
   const [allRooms, setAllRooms] = useState([]);
@@ -22,7 +28,10 @@ function Rooms({ searchParams }) {
 
   const fetchRooms = async (sortRooms) => {
     const roomRef = collection(db, "room_details");
-    const queryRef = sortRooms === "default" ? roomRef : query(roomRef, orderBy("price", sortRooms));
+    const queryRef =
+      sortRooms === "default"
+        ? roomRef
+        : query(roomRef, orderBy("price", sortRooms));
     const querySnapshot = await getDocs(queryRef);
     setAllRooms(
       querySnapshot.docs.map((doc) => ({
@@ -32,28 +41,6 @@ function Rooms({ searchParams }) {
     );
     setIsLoading(false);
   };
-
-  // useEffect(() => {
-  //   const getCollection = collection(db, "room_details");
-  //   const unsubscribe = onSnapshot(
-  //     getCollection,
-  //     (snapshot) => {
-  //       const roomData = snapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       }));
-  //       setAllRooms(roomData);
-  //       setIsLoading(false);
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching rooms:", error);
-  //       setIsLoading(false);
-  //     }
-  //   );
-
-  //   // Cleanup subscription on unmount
-  //   return () => unsubscribe();
-  // }, [sortRooms]);
 
   return (
     <>

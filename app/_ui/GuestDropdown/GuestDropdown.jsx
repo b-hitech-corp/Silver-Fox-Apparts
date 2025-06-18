@@ -41,7 +41,7 @@ const GuestDropdown = ({ user }) => {
         src={
           user.photoURL
             ? user.photoURL
-            : `https://ui-avatars.com/api/?name=${user?.photoURL?.replace(
+            : `https://ui-avatars.com/api/?name=${user?.fullname?.replace(
                 " ",
                 "+"
               )}&background=161616&color=F1F1F1`

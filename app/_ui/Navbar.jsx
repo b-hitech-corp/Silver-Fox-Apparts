@@ -11,7 +11,7 @@ import Image from "next/image";
 function Navbar({ signOutAction }) {
   const [hideMenu, setHideMenu] = useState(true);
   const pathname = usePathname();
-  const { user } = useAuth();
+  const { user, userData } = useAuth();
 
   return (
     <header>
@@ -63,7 +63,10 @@ function Navbar({ signOutAction }) {
             </li>
             <li>
               {user ? (
-                <GuestDropdown user={user} signOutAction={signOutAction} />
+                <GuestDropdown
+                  user={{ ...userData, ...user }}
+                  signOutAction={signOutAction}
+                />
               ) : (
                 <Link
                   className={
