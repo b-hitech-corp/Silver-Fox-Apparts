@@ -17,11 +17,11 @@ function Navbar({ signOutAction }) {
     <header>
       <div className="container header-items">
         <Image
-          width={180}
-          height={180}
-          src={"/logo-hotal.jpg"}
+          width={150}
+          height={100}
+          src={"/logo-hotal-1.jpg"}
           alt="slider image"
-          style={{ height: "100%" }}
+          // style={{ height: "70%" }}
         />
         <nav className={`navbar ${hideMenu ? "hide-menu" : "show-menu"}`}>
           <ul>
