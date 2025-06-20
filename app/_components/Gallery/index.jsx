@@ -10,7 +10,7 @@ function Gallery() {
 
   useEffect(() => {
     const unsubscribe = listenToRoomImages((images) => {
-      const latestImages = images?.[0]?.images?.slice(0, 8) ?? [];
+      const latestImages = images?.[0]?.images?.slice(0, 10) ?? [];
       setGalleryImages(latestImages);
     });
 

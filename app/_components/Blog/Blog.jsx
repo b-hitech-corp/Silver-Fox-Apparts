@@ -14,7 +14,7 @@ function Blog() {
         <div className={styles.blogGrid}>
           <Card>
             <Card.Thumbnail>
-              <Image fill src="/img-4.jpg" alt="" />
+              <Image fill src="/img-20.jpg" alt="" />
             </Card.Thumbnail>
             <Card.Description className={styles.blogDescriptionContainer}>
               <h2 className={styles.blogHeading}>
@@ -52,7 +52,7 @@ function Blog() {
 
           <Card>
             <Card.Thumbnail>
-              <Image fill src="/img-6.jpg" alt="" />
+              <Image fill src="/img-25.jpg" alt="" />
             </Card.Thumbnail>
             <Card.Description className={styles.blogDescriptionContainer}>
               <h2 className={styles.blogHeading}>

@@ -27,9 +27,15 @@ function About() {
               experience smooth, comfortable, and memorable.
             </p>
           </div>
-          <div className={styles.gallery}>
+          <div
+            className={pathname !== "/about" ? styles.gallery : styles.about}
+          >
             <div>
-              <Image fill src="/bg-1.jpg" alt="" />
+              <Image
+                fill
+                src={pathname !== "/about" ? "/img-21.jpg" : "/logo-hotal.jpg"}
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -50,6 +56,8 @@ function About() {
                 "/img-17.jpg",
                 "/img-18.jpg",
                 "/img-19.jpg",
+                "/img-31.jpg",
+                "/img-29.jpg",
               ].map((item, index) => (
                 <div key={index} className={styles.thumbnail}>
                   <Image

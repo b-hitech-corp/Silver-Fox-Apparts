@@ -4,7 +4,7 @@ import BookingForm from "../BookingForm";
 import styles from "./index.module.css";
 import BookingButton from "../BookingButton";
 import Modal from "@/app/_components/Modal/Modal";
-const images = ["/bg.png", "/img-1.jpg", "/img-2.jpg", "/img-10.jpg"];
+const images = ["/bg-2.jpg", "/img-1.jpg", "/img-28.jpg", "/img-10.jpg"];
 
 function HeroSection({ bookingSearchAction }) {
   return (
