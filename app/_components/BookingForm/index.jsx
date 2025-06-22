@@ -1,11 +1,10 @@
 "use client";
-import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import BookingButton from "../BookingButton";
 import styles from "./index.module.css";
-import { useState } from "react";
-
-import { addDays, formatISO, isBefore, isValid } from "date-fns";
+import { addDays, formatISO, isBefore } from "date-fns";
 import toast, { Toaster } from "react-hot-toast";
 
 function BookingForm({ bookingSearchAction, children }) {
@@ -36,44 +35,49 @@ function BookingForm({ bookingSearchAction, children }) {
   }
 
   return (
-    <form action={handleSearch} className={styles.bookingForm}>
+    <form action={handleSearch}>
       <h1 className={styles.formHeading}>BOOK A ROOM ONLINE</h1>
-      <div className={styles.formControl}>
-        <label htmlFor="" className={styles.formLabel}>
-          Arrival
-        </label>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => handleStartSelection(date)}
-          selectsStart
-          startDate={startDate}
-          endDate={endDate}
-          className={styles.input}
-          dateFormat={"dd/MM/yyyy"}
-          excludeDateIntervals={[{ start: new Date("01/01/1970"), end: new Date() }]}
-        />
-      </div>
-      <div className={styles.formControl}>
-        <label htmlFor="" className={styles.formLabel}>
-          Departure
-        </label>
-        <DatePicker
-          selected={endDate}
-          onChange={(date) => handleEndSelection(date)}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-          className={styles.input}
-          dateFormat={"dd/MM/yyyy"}
-          excludeDateIntervals={[{ start: new Date("01/01/1970"), end: new Date() }]}
-        />
-      </div>
+      <div className={styles.bookingForm}>
+        <div className={styles.formGroup}>
+          <label htmlFor="checkIn">Check In</label>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => handleStartSelection(date)}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            className={styles.input}
+            dateFormat={"dd/MM/yyyy"}
+            excludeDateIntervals={[
+              { start: new Date("01/01/1970"), end: new Date() },
+            ]}
+          />
+        </div>
 
-      <div className={styles.actions}>
-        <BookingButton />
-        <div>{children}</div>
+        <div className={styles.formGroup}>
+          <label htmlFor="checkOut">Check Out</label>
+          <DatePicker
+            selected={endDate}
+            onChange={(date) => handleEndSelection(date)}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            className={styles.input}
+            dateFormat={"dd/MM/yyyy"}
+            excludeDateIntervals={[
+              { start: new Date("01/01/1970"), end: new Date() },
+            ]}
+          />
+        </div>
+
+        <div className={styles.actions}>
+          <BookingButton />
+          {children}
+        </div>
       </div>
+      <p className={styles.trustLine}>* 24/7 Support and Secure Booking</p>
+
       <Toaster position="top-center" reverseOrder={false} />
     </form>
   );

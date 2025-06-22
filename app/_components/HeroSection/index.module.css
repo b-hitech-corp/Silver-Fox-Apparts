@@ -1,33 +1,20 @@
-.wrapper {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 128px;
+.closeButton {
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: #fff;
+  color: #161616;
+  transition: all 300ms linear;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  width: 100%;
 }
 
-.heroTitle {
-  font-size: 18px;
-  color: #FFF;
-  text-align: center;
-}
-
-@media (min-width: 540px) { 
-  .heroTitle {
-    font-size: 22px;
-  }
-}
-
-@media (min-width: 820px) {
-  .heroTitle {
-    text-align: start;
-    font-size: 28px;
-  }
-}
-
-.heroTitle p:first-child {
-  font-weight: 700;
-  margin-bottom: 24px;
+.closeButton:hover {
+  background-color: #161616;
+  color: #fff;
 }
 
 .heroCTA {
@@ -40,37 +27,79 @@
   width: 240px;
 }
 
+.heroContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  max-width: 960px;
+  width: 100%;
+  z-index: 2;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.highlight {
+  color: #9d6bff; /* Purple highlight */
+}
+
+.subHeading {
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.formWrapper {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
 @media (min-width: 820px) {
   .heroCTA {
     display: none;
   }
+  .formWrapper {
+    display: block;
+  }
 }
 
-.closeForm {
-  display: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 12px;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  background-color: #00000020;
+@media (min-width: 540px) {
+  .heroContainer {
+    height: calc(100vh - 64px);
+  }
+  .heading {
+    font-size: 2.4rem;
+  }
+  .subHeading {
+    font-size: 1.1rem;
+  }
 }
 
-.closeButton {
-  padding: 12px 24px;
-  border-radius: 24px;
-  background-color: #FFF;
-  color: #161616;
-  transition: all 300ms linear;
-  outline: none;
-  border: none;
-  font-weight: 600;
-  font-size: 17px;
-  cursor: pointer;
-}
-
-.closeButton:hover {
-  background-color: #161616;
-  color: #FFF;
+@media (min-width: 768px) {
+  .formWrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px;
+  }
 }
