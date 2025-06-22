@@ -1,77 +1,77 @@
 .aboutSection {
-  padding: 60px 0px;
+  padding: 60px 0;
   background-color: #fff;
 }
 
-@media (min-width: 720px) {
+.aboutHeading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.aboutHeading span {
+  margin-bottom: 0rem;
+}
+
+.highlight {
+  color: #9d6bff;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
   .aboutContainer {
-    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     gap: 56px;
   }
 }
 
-.aboutContainer p {
-  text-align: justify;
-  line-height: 1.8;
-  font-size: 18px;
+.description {
+  flex: 1;
   color: #333;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-.gallery {
-  width: 100%;
-}
-
-.gallery div {
+.imageWrapper {
   position: relative;
-  aspect-ratio: 16/9;
-}
-
-@media (min-width: 720px) {
-  .gallery {
-    width: 55%;
-    flex-grow: 1;
-    flex-shrink: 0;
-  }
-}
-
-.gallery img {
+  aspect-ratio: 16/10;
   width: 100%;
-  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about {
-  width: 100%;
+  flex: 1;
 }
 
-.about div {
-  position: relative;
-  aspect-ratio: 1;
+.about .imageWrapper img {
+  object-fit: contain;
 }
 
-@media (min-width: 720px) {
-  .about {
-    width: 30%;
-    flex-grow: 1;
-    flex-shrink: 0;
-  }
-}
-
-.about img {
-  width: 100%;
-  /* aspect-ratio: 16/9;
-   */
-  position: absolute;
-  height: 82% !important;
-  width: 79% !important;
-  inset: 0px;
-  color: transparent;
+.gallery {
+  flex: 1;
 }
 
 .gallerySection {
   background-color: #fff;
-  padding: 60px 0px;
-  position: relative;
+  padding: 60px 0;
 }
 
 .galleryGrid {
@@ -85,16 +85,39 @@
   overflow: hidden;
   position: relative;
   aspect-ratio: 16/9;
-  width: 100%;
-  height: fit-content;
+  border-radius: 12px;
 }
 
 .thumbnail img {
+  transition: all 300ms ease;
   width: 100%;
-  aspect-ratio: 4/3;
-  transition: all 300ms linear;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumbnail img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+.featureList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 2rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.featureIcon {
+  font-size: 1.2rem;
+  color: #9d6bff;
 }

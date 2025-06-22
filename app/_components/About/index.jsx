@@ -27,35 +27,60 @@ function About() {
       <section className={styles.aboutSection}>
         <div className={`container ${styles.aboutContainer}`}>
           <div className={styles.description}>
-            {pathname !== "/about" && <Heading>About Us</Heading>}
-            <p>Welcome to Silver Fox Apartment, </p>
+            {pathname !== "/about" && (
+              <Heading className={styles.aboutHeading}>
+                About <span className={styles.highlight}>Us</span>
+              </Heading>
+            )}
             <p>
-              At Silver Fox Apartment, we blend hotel-style luxury with the
-              comfort of home. Perfectly located in the heart of the city, our
-              fully furnished apartments are ideal for short or long stays —
-              whether you're here for business or leisure.
+              Welcome to Silver Fox Apartment. At Silver Fox Apartment, we blend
+              hotel-style luxury with the comfort of home. Perfectly located in
+              the heart of the city, our fully furnished apartments are ideal
+              for short or long stays — whether you're here for business or
+              leisure.
             </p>
-            <p>
+            <p style={{ marginTop: "1.5rem" }}>
               Enjoy seamless online booking and a stress-free stay with modern
               amenities like high-speed Wi-Fi, fully equipped kitchens, cozy
               bedrooms, and professional housekeeping. Backed by exceptional
               customer service and 24/7 support, we’re committed to making your
               experience smooth, comfortable, and memorable.
             </p>
+
+            <div className={styles.featureList}>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>✅</span> 24/7 Support
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>📶</span> High-Speed Wi-Fi
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🛎️</span> Professional
+                Service
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🛋️</span> Fully Furnished
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>⭐</span> Premium Quality
+              </div>
+            </div>
           </div>
+
           <div
             className={pathname !== "/about" ? styles.gallery : styles.about}
           >
-            <div>
+            <div className={styles.imageWrapper}>
               <Image
                 fill
                 src={pathname !== "/about" ? "/img-21.jpg" : "/logo-hotal.jpg"}
-                alt=""
+                alt="Luxury apartment view"
               />
             </div>
           </div>
         </div>
       </section>
+
       {pathname === "/about" && (
         <section className={styles.gallerySection}>
           <div className="container">
@@ -92,6 +117,7 @@ function About() {
           </div>
         </section>
       )}
+
       <GalleryModal
         isOpen={isOpen}
         images={[
