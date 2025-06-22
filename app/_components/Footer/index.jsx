@@ -16,7 +16,7 @@ function Footer() {
               <MdMail />
               SilverFoxApparts@gmail.com
             </li>
-            <li
+            {/* <li
               style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
             >
               <MdPhoneIphone /> (+1)-510-847-1485
@@ -30,7 +30,7 @@ function Footer() {
               style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
             >
               <FaPhone /> (228)-92-17-16-49
-            </li>
+            </li> */}
             <li
               style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
             >

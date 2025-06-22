@@ -1,5 +1,4 @@
 .accountLayout {
-  
   max-width: 1200px;
   margin: auto;
   padding: 0 20px;
@@ -36,7 +35,6 @@
   }
 }
 
-
 .sidebarList {
   display: flex;
   gap: 16px;
@@ -59,8 +57,8 @@
   cursor: pointer;
 }
 
-
-.sidebarLink, .sidebarButton {
+.sidebarLink,
+.sidebarButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,38 +66,42 @@
   width: 100%;
   padding: 8px 16px;
   background-color: #1a1a1a;
-  color: #F1F1F1;
+  color: #f1f1f1;
   transition: all 150ms linear;
 }
 
 @media (min-width: 780px) {
-  .sidebarLink, .sidebarButton {
+  .sidebarLink,
+  .sidebarButton {
     justify-content: initial;
   }
 }
 
-.sidebarLink:hover, .sidebarButton:hover {
-  background-color: #dc143c;
+.sidebarLink:hover,
+.sidebarButton:hover {
+  background-color: #14b4dc;
 }
 
 @media (min-width: 780px) {
-  .sidebarLink, .sidebarButton {
+  .sidebarLink,
+  .sidebarButton {
     gap: 12px;
     padding: 16px 32px;
     font-size: 17px;
   }
 }
 
-.sidebarLink span:last-child, .sidebarButton span:last-child {
+.sidebarLink span:last-child,
+.sidebarButton span:last-child {
   display: none;
 }
 
 @media (min-width: 714px) {
-  .sidebarLink span:last-child, .sidebarButton span:last-child {
+  .sidebarLink span:last-child,
+  .sidebarButton span:last-child {
     display: inline;
   }
 }
-
 
 .content {
   height: 100%;

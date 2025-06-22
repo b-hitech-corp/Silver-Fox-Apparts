@@ -1,6 +1,7 @@
 .gallerySection {
   background-color: #fff;
   padding: 60px 0px;
+  position: relative;
 }
 
 .galleryGrid {
@@ -16,14 +17,37 @@
   aspect-ratio: 16/9;
   width: 100%;
   height: fit-content;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
 }
 
 .thumbnail img {
   width: 100%;
   aspect-ratio: 4/3;
   transition: all 300ms linear;
+  object-fit: cover;
 }
 
-.thumbnail img:hover {
+.thumbnail:hover img {
   transform: scale(1.2);
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .thumbnail {
+    aspect-ratio: 1;
+    cursor: default;
+  }
+
+  .thumbnail:hover img {
+    transform: none;
+  }
 }

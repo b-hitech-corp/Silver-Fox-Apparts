@@ -34,16 +34,15 @@
   transform: translateX(-50%);
   width: 164px;
   height: 2px;
-  background-color: #dc143c;
+  background-color: #14b4dc;
 }
-
 
 @media (min-width: 720px) {
   .footerMenu h3::after {
     bottom: 0;
     left: 0;
     transform: translateX(0);
-    background-color: #dc143c;
+    background-color: #14b4dc;
   }
 }
 
@@ -60,11 +59,9 @@
   transition: all 150ms linear;
 }
 
-
 .footerMenu ul a:hover {
-  color: #dc143c;
+  color: #14b4dc;
 }
-
 
 .newsletter {
   display: flex;
@@ -80,7 +77,8 @@
   }
 }
 
-.newsletter input, .newsletter button{
+.newsletter input,
+.newsletter button {
   padding: 12px 8px;
   border: none;
   outline: none;
@@ -92,17 +90,16 @@
 }
 
 .newsletter input {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 
 .newsletter button {
-  background-color: #dc143c;
-  color: #F1F1F1;
+  background-color: #14b4dc;
+  color: #f1f1f1;
   transition: all 150ms linear;
   cursor: pointer;
 }
 
 .newsletter button:hover {
   background-color: #77071e;
-
 }

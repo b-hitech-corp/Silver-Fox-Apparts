@@ -1,6 +1,6 @@
 .reservationItem {
   width: 100%;
-  box-shadow: 2px 2px 8px 1px #DDD;
+  box-shadow: 2px 2px 8px 1px #ddd;
   margin-bottom: 20px;
 }
 
@@ -24,18 +24,16 @@
 .past {
   background-color: #d8143bbb;
   color: #fff;
-
 }
 .future {
   background-color: rgba(59, 62, 221, 0.719);
   color: #fff;
-
 }
 
 @media (min-width: 780px) {
   .reservationItem {
     display: grid;
-    grid-template-columns: 180px 1fr; 
+    grid-template-columns: 180px 1fr;
     /* height: 132px; */
   }
 }
@@ -69,16 +67,15 @@
 }
 
 .price {
-  color: #dc143c;
+  color: #14b4dc;
   font-weight: 600;
 }
-
 
 .reservationOverview {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 6px
+  gap: 6px;
 }
 
 .reservationOverview h2 {
@@ -103,12 +100,10 @@
   }
 }
 
-
-
 .reservationPriceContainer p {
   font-size: 17px;
   font-weight: 600;
-  color: #dc143c;
+  color: #14b4dc;
   text-align: center;
 }
 
@@ -117,7 +112,6 @@
     text-align: right;
   }
 }
-
 
 /* .controlButtons {
   display: flex;
@@ -136,7 +130,7 @@
 }
 
 .overviewButton:not(:disabled):hover {
-  background-color: #131313
+  background-color: #131313;
 }
 
 .overviewButton:disabled {

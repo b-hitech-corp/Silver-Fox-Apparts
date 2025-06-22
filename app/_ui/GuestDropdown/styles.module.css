@@ -52,7 +52,6 @@
   background-color: #f1f1f1;
 }
 
-
 .dropdownOption {
   color: #161616;
   text-decoration: none;
@@ -74,5 +73,5 @@
 }
 
 .dropdownItem button:hover {
-  color: #dc143c;
+  color: #14b4dc;
 }

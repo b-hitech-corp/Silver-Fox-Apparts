@@ -30,7 +30,7 @@ main {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1330px;
   margin: auto;
   padding: 0px 20px;
 }
@@ -49,6 +49,10 @@ main {
 
 header {
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1003;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 header .header-items {
@@ -101,7 +105,8 @@ header nav ul {
 
 .navbar ul a:hover,
 .navbar ul a.active {
-  color: #dc143c;
+  color: #14b4dc;
+  font-size: 18px;
 }
 
 .toggle-menu-button {
@@ -246,7 +251,7 @@ div.slider nav.slider-menu button.active {
   width: 86px;
   height: 2px;
   margin: 12px auto 40px;
-  border: 2px solid rgb(168, 13, 44);
+  border: 2px solid #14b4dc;
 }
 
 /* GLOBAL LOADING */

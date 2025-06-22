@@ -1,10 +1,11 @@
-import Footer from "./_components/Footer";
-import Navbar from "./_ui/Navbar";
-import "./styles.css";
-
 import { Roboto } from "next/font/google";
+import "swiper/css";
+import "swiper/css/navigation";
+import Footer from "./_components/Footer";
 import { AuthProvider } from "./_context/AuthContext";
 import { signOutAction } from "./_lib/actions";
+import Navbar from "./_ui/Navbar";
+import "./styles.css";
 
 const roboto_font = Roboto({
   subsets: ["latin"],

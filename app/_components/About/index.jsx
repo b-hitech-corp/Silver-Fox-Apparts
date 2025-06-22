@@ -1,11 +1,27 @@
 "use client";
 import Heading from "@/app/_ui/Heading";
-import styles from "./styles.module.css";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import styles from "./styles.module.css";
+import GalleryModal from "../common/GalleryModal";
 
 function About() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
+
+  const openSlider = (index) => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) return;
+    setStartIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeSlider = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <section className={styles.aboutSection}>
@@ -59,7 +75,11 @@ function About() {
                 "/img-31.jpg",
                 "/img-29.jpg",
               ].map((item, index) => (
-                <div key={index} className={styles.thumbnail}>
+                <div
+                  key={index}
+                  className={styles.thumbnail}
+                  onClick={() => openSlider(index)}
+                >
                   <Image
                     fill
                     src={item}
@@ -72,6 +92,25 @@ function About() {
           </div>
         </section>
       )}
+      <GalleryModal
+        isOpen={isOpen}
+        images={[
+          "/img-10.jpg",
+          "/img-11.jpg",
+          "/img-12.jpg",
+          "/img-13.jpg",
+          "/img-14.jpg",
+          "/img-15.jpg",
+          "/img-16.jpg",
+          "/img-17.jpg",
+          "/img-18.jpg",
+          "/img-19.jpg",
+          "/img-31.jpg",
+          "/img-29.jpg",
+        ]}
+        startIndex={startIndex}
+        onClose={closeSlider}
+      />
     </>
   );
 }

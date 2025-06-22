@@ -2,11 +2,11 @@
   position: relative;
 }
 
-.overviewDescription, .cancelView {
+.overviewDescription,
+.cancelView {
   padding: 12px;
   border: 1px solid #dedede;
 }
-
 
 .overviewDescription h2 {
   font-size: 22px;
@@ -28,13 +28,11 @@
   margin-bottom: 4px;
 }
 
-
 .bookingSummary p {
   display: flex;
   justify-content: space-between;
   gap: 4px;
 }
-
 
 .bookingSummary p span:first-of-type {
   color: #656a70;
@@ -63,15 +61,17 @@
   transition: all 150ms linear;
   cursor: pointer;
   width: 100% !important;
-  
 }
 
-.editButton, .backButton {
+.editButton,
+.backButton {
   background-color: #131313;
 }
 
-.deleteButton, .cancelButton, .confirmationButton {
-  background-color: #dc143c;
+.deleteButton,
+.cancelButton,
+.confirmationButton {
+  background-color: #14b4dc;
 }
 
 .editLink {
@@ -85,7 +85,8 @@
   transition: all 150ms linear;
 }
 
-.editLink, .actionsContainer button {
+.editLink,
+.actionsContainer button {
   display: flex;
   align-items: center;
   justify-content: center;

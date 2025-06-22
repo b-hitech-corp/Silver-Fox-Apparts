@@ -7,10 +7,11 @@
 
 .buttonsContainer button:not(.closeButton) {
   width: 100%;
-  min-width: 98px
+  min-width: 98px;
 }
 
-.closeButton, .overviewButton {
+.closeButton,
+.overviewButton {
   border: none;
   outline: none;
   cursor: pointer;
@@ -20,7 +21,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  color: #dc143c;
+  color: #14b4dc;
   background-color: #fff;
   border-radius: 50%;
   font-size: 32px;

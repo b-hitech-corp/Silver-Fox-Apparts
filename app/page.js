@@ -40,7 +40,7 @@ export default async function Home() {
     redirect(`/rooms?range=${formatedRange}`);
   }
   return (
-    <>
+    <div id="__next">
       <HeroSection bookingSearchAction={bookingSearchAction} />
       <About />
       <Suspense
@@ -55,6 +55,6 @@ export default async function Home() {
       </Suspense>
       <Blog />
       <ContactSection />
-    </>
+    </div>
   );
 }

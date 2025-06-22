@@ -1,5 +1,3 @@
-
-
 .overviewDescription {
   padding: 12px;
   border: 1px solid #dedede;
@@ -22,13 +20,12 @@
   gap: 4px;
 }
 
-
 .formControl div label {
   font-size: 17px;
   color: #656a70;
 }
 
-.formControl div input, 
+.formControl div input,
 .formControl div select {
   font-size: 17px;
   border-radius: none;
@@ -57,13 +54,11 @@
   margin-bottom: 4px;
 }
 
-
 .bookingSummary p {
   display: flex;
   justify-content: space-between;
   gap: 4px;
 }
-
 
 .bookingSummary p span:first-of-type {
   color: #656a70;
@@ -96,5 +91,5 @@
 }
 
 .deleteButton {
-  background-color: #dc143c;
+  background-color: #14b4dc;
 }

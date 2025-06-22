@@ -115,7 +115,12 @@ function RoomBookingForm({ bookingAction, room }) {
           </div>
           <div className={styles.formControl}>
             <label>Guests</label>
-            <select name="" id="" onChange={(e) => setGuests(e.target.value)}>
+            <select
+              name="guests"
+              id="guests"
+              onChange={(e) => setGuests(e.target.value)}
+              value={guests}
+            >
               <option value="">Select guests number</option>
               {Array.from(Array(room?.room_capacity ?? 0)).map(
                 (item, index) => (

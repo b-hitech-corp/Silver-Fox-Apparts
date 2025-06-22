@@ -23,13 +23,11 @@
   margin-bottom: 4px;
 }
 
-
 .bookingSummary p {
   display: flex;
   justify-content: space-between;
   gap: 4px;
 }
-
 
 .bookingSummary p span:first-of-type {
   color: #656a70;
@@ -54,6 +52,6 @@
 }
 
 .totalPrice span:last-of-type {
-  color: #dc143c;
+  color: #14b4dc;
   font-weight: 600;
 }
