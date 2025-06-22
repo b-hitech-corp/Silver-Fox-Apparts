@@ -2,23 +2,20 @@
   background-color: #fff;
 }
 
-
-
+/* Add in either roomcard.module.css or card.module.css */
 .thumbnailContainer {
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
   aspect-ratio: 16/9;
-  width: 100%;
-  height: fit-content;
 }
 
 .thumbnailContainer img {
   width: 100%;
-  /* aspect-ratio: 4/3; */
-  transition: all 300ms linear;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-
-.thumbnailContainer .zoomOnHover img:hover {
-  transform: scale(1.2);
+.thumbnailContainer:hover img {
+  transform: scale(1.1);
 }

@@ -1,34 +1,86 @@
 .roomCard {
-  background-color: #fff;
-}
-
-.thumbnailContainer {
+  border-radius: 10px;
   overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
-.thumbnailContainer img {
-  width: 100%;
-  /* aspect-ratio: 4/3; */
-  transition: all 300ms linear;
-  aspect-ratio: 4/3;
-}
-
-
-.thumbnailContainer img:hover {
-  transform: scale(1.2);
+.roomCard:hover {
+  transform: translateY(-5px);
 }
 
 .roomDescription {
-  padding: 24px 16px;
-  text-align: center;
+  padding: 20px;
+  text-align: start;
 }
-
 
 .roomDescription h2 {
   margin-bottom: 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
-.roomDescription p {
+.meta {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.amenities {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.amenities span {
+  background: #eef1f6;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
   color: #333;
-  line-height: 1.8;
+}
+
+.bookBtn {
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  color: #fff;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.bookBtn:hover {
+  background: linear-gradient(to right, #3b3fbd, #7279f9);
+}
+
+.hoverInfo {
+  position: absolute;
+  bottom: 57px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 16px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.thumbnailContainer:hover .hoverInfo {
+  transform: translateY(0);
+}
+
+.price {
+  display: block;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #ffdd57;
 }

@@ -36,9 +36,6 @@ async function Rooms() {
     <section className={styles.roomsSection}>
       <div className="container">
         <Heading className="text-center">Our Rooms</Heading>
-        {/* <p className="text-center">
-          Lorem Ipsum is available, but the majority have suffered
-        </p> */}
         <div className={styles.roomsGrid}>
           {isLoading ? (
             <Loading />

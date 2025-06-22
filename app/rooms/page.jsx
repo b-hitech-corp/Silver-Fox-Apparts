@@ -1,19 +1,12 @@
 "use client";
-
-import FilterSection from "./_components/FilterSection";
-import styles from "./styles.module.css";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import Banner from "../_components/Banner";
-import RoomsSection from "./_components/RoomsSection";
-import { Suspense, useState, useEffect } from "react";
-import Loader from "../_ui/Loader";
 import { db } from "../_lib/firebase/firebase";
-import {
-  collection,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import Loader from "../_ui/Loader";
+import FilterSection from "./_components/FilterSection";
+import RoomsSection from "./_components/RoomsSection";
+import styles from "./styles.module.css";
 
 function Rooms({ searchParams }) {
   const [allRooms, setAllRooms] = useState([]);
@@ -48,7 +41,6 @@ function Rooms({ searchParams }) {
 
       <div className={`container ${styles.roomsHolder}`}>
         <FilterSection setSortRooms={setSortRooms} />
-        {/* <FilterSection filters={{ filter, range }} /> */}
 
         {isLoading ? (
           <div className={styles.loader}>

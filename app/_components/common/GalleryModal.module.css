@@ -2,19 +2,23 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -38%);
+  transform: translate(-50%, -38%) !important;
   width: 90%;
   max-width: 960px;
-  background: #434242;
+  background: #1e1e1e;
   padding: 20px;
   border-radius: 16px;
   max-height: 90vh;
   overflow: hidden;
   z-index: 1001;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
 }
 
 .overlay {
+  position: fixed;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
   z-index: 1000;
 }
 
@@ -28,6 +32,11 @@
   border: none;
   cursor: pointer;
   z-index: 1002;
+  transition: opacity 0.2s ease;
+}
+
+.closeBtn:hover {
+  opacity: 0.8;
 }
 
 .swiper {
@@ -40,10 +49,12 @@
   width: 100%;
   height: 500px;
 }
+
 .slideWrapper img {
   object-fit: contain;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .modal {
     padding: 10px;
