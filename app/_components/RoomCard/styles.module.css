@@ -47,7 +47,8 @@
 }
 
 .bookBtn {
-  background: linear-gradient(to right, #4e54c8, #4fc3f7);
+  background: #dc143c;
+  /* background: linear-gradient(to right, #4e54c8, #dc143c); */
   color: #fff;
   padding: 10px 24px;
   border: none;
@@ -58,7 +59,8 @@
 }
 
 .bookBtn:hover {
-  background: linear-gradient(to right, #4fc3f7, #3b3fbd);
+  /* background: linear-gradient(to right, #dc143c, #3b3fbd); */
+  background: #dc143c;
 }
 
 .hoverInfo {
@@ -83,4 +85,25 @@
   margin-top: 8px;
   font-weight: bold;
   color: #ffdd57;
+}
+
+@media (max-width: 768px) {
+  .roomDescription {
+    padding: 16px;
+  }
+
+  .roomDescription h2 {
+    font-size: 1.1rem;
+  }
+
+  .meta {
+    font-size: 0.8rem;
+  }
+
+  .bookBtn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }

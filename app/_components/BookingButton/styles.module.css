@@ -1,7 +1,8 @@
 .bookingBtn {
   padding: 12px 24px;
   border-radius: 24px;
-  background: linear-gradient(to right, #6f43ff, #4fc3f7);
+  background: #dc143c;
+  /* background: linear-gradient(to right, #6f43ff, #4fc3f7); */
   color: #fff;
   transition: background 0.3s ease, transform 0.2s;
   outline: none;
@@ -13,7 +14,7 @@
 }
 
 .bookingBtn:not(:disabled):hover {
-  background-color: #fff;
+  background-color: #dc143c;
 }
 
 .bookingBtn:disabled {

@@ -6,7 +6,7 @@ function Card({ children, className = "" }) {
   );
 }
 
-function Thumbnail({ zoomOnHover = true, children }) {
+function Thumbnail({ zoomOnHover = false, children }) {
   return (
     <div
       className={`${styles.thumbnailContainer} ${
