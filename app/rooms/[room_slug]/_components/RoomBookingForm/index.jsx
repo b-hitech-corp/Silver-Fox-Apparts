@@ -25,7 +25,7 @@ function RoomBookingForm({ bookingAction, room }) {
   const [pickerResetKey, setPickerResetKey] = useState(0);
 
   const [guests, setGuests] = useState("");
-  const [paymentMode, setPaymentMode] = useState("cod");
+  const [paymentMode, setPaymentMode] = useState("online");
 
   const handleDateSelection = useCallback((range) => {
     if (!range) return;
@@ -63,13 +63,12 @@ function RoomBookingForm({ bookingAction, room }) {
   }
 
   useEffect(() => {
-    console.log("stated:::62", state);
     if (state.success) {
       setStartDate("");
       setEndDate("");
       setGuests("");
       setPickerResetKey((prev) => prev + 1); // trigger FormDayPicker re-render
-      setPaymentMode("cod");
+      setPaymentMode("online");
     }
   }, [state.success]);
 
@@ -145,7 +144,7 @@ function RoomBookingForm({ bookingAction, room }) {
               value={paymentMode}
             >
               <option value="">Select Payement Mode</option>
-              <option value={"cod"}>COD (Cash On Delivary)</option>
+              {/* <option value={"cod"}>COD (Cash On Arrival)</option> */}
               <option value={"online"}>Online</option>
             </select>
           </div>

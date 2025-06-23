@@ -47,7 +47,7 @@
 }
 
 .bookBtn {
-  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  background: linear-gradient(to right, #4e54c8, #4fc3f7);
   color: #fff;
   padding: 10px 24px;
   border: none;
@@ -58,7 +58,7 @@
 }
 
 .bookBtn:hover {
-  background: linear-gradient(to right, #3b3fbd, #7279f9);
+  background: linear-gradient(to right, #4fc3f7, #3b3fbd);
 }
 
 .hoverInfo {

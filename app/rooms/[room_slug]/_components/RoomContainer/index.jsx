@@ -76,7 +76,7 @@ async function RoomContainer({ params, roomDetails }) {
     if (payment_mode === "cod") {
       try {
         await addDoc(collection(db, "room_bookings"), bookingData);
-        toast.success("Room booked successfully with Cash on Delivery.");
+        toast.success("Room booked successfully with Cash on Arrival.");
         return { ...prevState, isBooking: false, success: true };
       } catch (error) {
         console.error("Firestore error:", error);
@@ -133,7 +133,7 @@ async function RoomContainer({ params, roomDetails }) {
       <Features room={roomDetails} />
       <RoomSlider images={[roomDetails?.room_img]} />
       <RoomBookingForm bookingAction={bookingAction} room={roomDetails} />
-      <RoomDescription />
+      <RoomDescription room={roomDetails} />
       <Facilities />
       {/* <BookingPolicy /> */}
     </>

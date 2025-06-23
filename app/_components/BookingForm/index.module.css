@@ -67,7 +67,7 @@
 
 .formGroup input:focus,
 .formGroup select:focus {
-  border-color: #9d6bff;
+  border-color: #4fc3f7;
   outline: none;
 }
 

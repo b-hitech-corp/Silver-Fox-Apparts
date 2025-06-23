@@ -1,7 +1,7 @@
 .bookingBtn {
   padding: 12px 24px;
   border-radius: 24px;
-  background: linear-gradient(to right, #6f43ff, #a950ff);
+  background: linear-gradient(to right, #6f43ff, #4fc3f7);
   color: #fff;
   transition: background 0.3s ease, transform 0.2s;
   outline: none;
