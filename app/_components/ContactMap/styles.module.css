@@ -1,24 +1,23 @@
 .mapWrapper {
-  position: relative;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
   height: 100%;
+  position: relative;
+  min-height: 300px;
 }
-
 
 .goBackButton {
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 12px 42px;
+  padding: 10px 20px;
   background-color: #1e40af;
-  border-radius: 4px;
-  z-index: 10000;
-  color: #FFF;
-  outline: none;
+  color: #fff;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 300ms linear;
-
-  &:hover {
-    background-color: #172554;
-  }
+  font-size: 14px;
+  font-weight: bold;
 }

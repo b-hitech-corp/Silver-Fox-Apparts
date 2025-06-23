@@ -80,7 +80,7 @@ header nav ul {
 .navbar ul {
   position: absolute;
   left: 0;
-  top: 64px;
+  top: 119px;
   width: 100dvw;
   flex-direction: column;
   align-items: center;
@@ -93,6 +93,7 @@ header nav ul {
   .navbar ul {
     width: auto;
     position: static;
+    top: 64px;
     background-color: #fff;
     padding: 0 0;
     flex-direction: row;

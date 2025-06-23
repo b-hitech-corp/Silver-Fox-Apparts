@@ -27,13 +27,13 @@ function ContactMap() {
 
   return (
     <div className={styles.mapWrapper}>
-      <button
+      {/* <button
         type="button"
         className={styles.goBackButton}
         onClick={handleReset}
       >
         Refresh
-      </button>
+      </button> */}
       <Map initialCenter={initialCenter} center={center} />
     </div>
   );

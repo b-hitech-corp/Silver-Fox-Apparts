@@ -1,0 +1,19 @@
+.infoCard {
+  background-color: #ffffff;
+  padding: 20px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.infoCard h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.infoCard svg {
+  margin-right: 10px;
+  color: #4f46e5;
+}
