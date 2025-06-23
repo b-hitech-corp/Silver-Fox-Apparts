@@ -1,0 +1,14 @@
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #facc15; /* yellow-400 for example */
+  position: fixed;
+  top: 60px; /* adjust to height of your navbar */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1031;
+  box-shadow: 0 0 10px #facc15, 0 0 5px #facc15;
+}

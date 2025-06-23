@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import "swiper/css";
 import "swiper/css/navigation";
 import Footer from "./_components/Footer";
+import ProgressBar from "./_components/ProgressBar";
 import { AuthProvider } from "./_context/AuthContext";
 import { signOutAction } from "./_lib/actions";
 import Navbar from "./_ui/Navbar";
@@ -19,6 +20,7 @@ export default async function RootLayout({ children }) {
       <body className={roboto_font.className}>
         <AuthProvider>
           <Navbar signOutAction={signOutAction} />
+          <ProgressBar />
           <main>{children}</main>
           <Footer />
         </AuthProvider>
