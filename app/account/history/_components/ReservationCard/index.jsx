@@ -90,8 +90,11 @@ function ReservationCard({ reservation }) {
           </p>
 
           <p>
-            <span className={styles.price}>${reservation.room_price}</span> -{" "}
-            {reservation.guests_count} Guest(s)
+            <span className={styles.price}>
+              {reservation?.payment_details?.currency === "xof" ? "FCFA " : "$"}
+              {reservation.room_price}
+            </span>{" "}
+            - {reservation.guests_count} Guest(s)
           </p>
 
           <Badge

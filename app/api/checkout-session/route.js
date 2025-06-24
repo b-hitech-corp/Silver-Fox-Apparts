@@ -17,7 +17,7 @@ export async function GET(req) {
       id: session.id,
       payment_intent: session.payment_intent?.id,
       payment_status: session.payment_status,
-      amount_total: session.amount_total,
+      amount_total: session.amount_total * 100,
       currency: session.currency,
       metadata: session.metadata,
     };

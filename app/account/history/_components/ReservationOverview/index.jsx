@@ -91,7 +91,12 @@ function ReservationOverview({
             </p>
             <p>
               <span>Total Price</span>
-              <span>${Number(reservation.room_price).toFixed(2)}</span>
+              <span>
+                {reservation?.payment_details?.currency === "xof"
+                  ? "FCFA "
+                  : "$"}
+                {reservation.room_price}
+              </span>
             </p>
           </div>
 

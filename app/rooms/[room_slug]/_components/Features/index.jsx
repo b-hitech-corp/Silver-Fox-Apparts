@@ -22,8 +22,8 @@ function Features({ room }) {
         <span className={styles.featureIcon}>
           <FontAwesomeIcon icon={faDollar} />
         </span>
-        <span className={styles.featureLabel}>Price:</span> from ${room?.price}{" "}
-        / night
+        <span className={styles.featureLabel}>Price:</span> from {room?.price}
+        {" FCFA"}/ night
       </li>
     </ul>
   );

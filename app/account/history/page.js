@@ -8,6 +8,7 @@ import {
   doc,
   getDoc,
   onSnapshot,
+  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -21,7 +22,11 @@ export const listenToUserReservationsWithRoomDetails = (
   onDataUpdate
 ) => {
   const bookingsRef = collection(db, "room_bookings");
-  const q = query(bookingsRef, where("user_id", "==", userId));
+  const q = query(
+    bookingsRef,
+    where("user_id", "==", userId),
+    orderBy("created_at", "desc")
+  );
 
   const unsubscribe = onSnapshot(q, async (snapshot) => {
     const reservations = await Promise.all(

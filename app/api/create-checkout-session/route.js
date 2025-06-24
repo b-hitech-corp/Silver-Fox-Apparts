@@ -18,11 +18,12 @@ export async function POST(req) {
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            // currency: "usd",
+            currency: "xof",
             product_data: {
               name: `Booking: ${roomDetails.room_type}`,
             },
-            unit_amount: roomDetails.price * 100,
+            unit_amount: Number(roomDetails.price) * 1000,
           },
           quantity: 1,
         },
