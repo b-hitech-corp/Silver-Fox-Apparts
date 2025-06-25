@@ -3,7 +3,7 @@ import Heading from "@/app/_ui/Heading";
 import NotFound from "@/app/not-found";
 import { loadStripe } from "@stripe/stripe-js";
 import { getAuth } from "firebase/auth";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import Facilities from "../Facilities";
@@ -31,33 +31,33 @@ async function RoomContainer({ params, roomDetails }) {
     const room_id = formData.get("room_id");
 
     // 🔍 Check for existing bookings
-    const bookingsRef = collection(db, "room_bookings");
-    const bookingsQuery = query(
-      bookingsRef,
-      where("roomId", "==", room_id),
-      where("status", "!=", "cancelled")
-    );
+    // const bookingsRef = collection(db, "room_bookings");
+    // const bookingsQuery = query(
+    //   bookingsRef,
+    //   where("roomId", "==", room_id),
+    //   where("status", "!=", "cancelled")
+    // );
 
-    try {
-      const snapshot = await getDocs(bookingsQuery);
-      const overlap = snapshot.docs.some((doc) => {
-        const existing = doc.data();
-        const existingCheckIn = new Date(existing.check_in);
-        const existingCheckOut = new Date(existing.check_out);
+    // try {
+    //   const snapshot = await getDocs(bookingsQuery);
+    //   const overlap = snapshot.docs.some((doc) => {
+    //     const existing = doc.data();
+    //     const existingCheckIn = new Date(existing.check_in);
+    //     const existingCheckOut = new Date(existing.check_out);
 
-        // Check if selected date overlaps with any existing booking
-        return check_in <= existingCheckOut && check_out >= existingCheckIn;
-      });
+    // Check if selected date overlaps with any existing booking
+    //     return check_in <= existingCheckOut && check_out >= existingCheckIn;
+    //   });
 
-      if (overlap) {
-        toast.error("The selected date is already booked for this room.");
-        return { ...prevState, isBooking: false, error: "Already booked." };
-      }
-    } catch (error) {
-      console.log("Error checking existing bookings:", error);
-      toast.error("Failed to verify room availability.");
-      return { ...prevState, isBooking: false, error: "Booking check failed." };
-    }
+    //   if (overlap) {
+    //     toast.error("The selected date is already booked for this room.");
+    //     return { ...prevState, isBooking: false, error: "Already booked." };
+    //   }
+    // } catch (error) {
+    //   console.log("Error checking existing bookings:", error);
+    //   toast.error("Failed to verify room availability.");
+    //   return { ...prevState, isBooking: false, error: "Booking check failed." };
+    // }
 
     const bookingData = {
       roomId: room_id,
