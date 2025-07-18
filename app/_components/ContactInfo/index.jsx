@@ -13,7 +13,7 @@ function ContactInfo() {
         <MdPhoneIphone /> (+228) 71523232, (+228) 92171649
       </p>
       <p>
-        <FaEnvelope /> info@silverfoxapartments.com
+        <FaEnvelope /> SilverFoxApparts@gmail.com
       </p>
     </div>
   );
