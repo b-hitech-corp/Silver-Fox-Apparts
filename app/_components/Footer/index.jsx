@@ -76,7 +76,7 @@ function Footer() {
               <MdPhoneIphone /> (+228) 71523232, (+228) 92171649
             </li>
             <li>
-              <MdMail /> info@silverfoxapartments.com
+              <MdMail /> SilverFoxApparts@gmail.com
             </li>
           </ul>
         </div>
